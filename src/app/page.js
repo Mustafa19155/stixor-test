@@ -13,10 +13,6 @@ export default function Home() {
 
   const { events, loading } = useContext(EventsContext);
 
-  // useEffect(() => {
-  //   fetchData({ latitude: 33.570816, longitude: 73.0628096 });
-  // }, []);
-
   return (
     <>
       {loading ? (

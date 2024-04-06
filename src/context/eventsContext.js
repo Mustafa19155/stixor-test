@@ -65,10 +65,10 @@ function EventsContextProvider({ children }) {
         eventsData.map(async (event, index) => {
           let location = "";
 
-          // location = await fetchData({
-          //   latitude: event.location[1],
-          //   longitude: event.location[0],
-          // });
+          location = await fetchData({
+            latitude: event.location[1],
+            longitude: event.location[0],
+          });
           return {
             ...event,
             location: location,
