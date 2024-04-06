@@ -77,7 +77,7 @@ function EventsContextProvider({ children }) {
       );
 
       setevents(eventsWithLocation);
-      seteventsCopy(eventsData);
+      seteventsCopy(eventsWithLocation);
 
       setloading(false);
     } catch (err) {
