@@ -1,26 +1,15 @@
 "use client";
-import EventOfMonth from "@/components/EventOfMonth";
 import Filters from "@/components/Filters";
-import Stats from "@/components/Stats";
 import Table from "@/components/Table";
-import UpcomingEvents from "@/components/UpcomingEvents";
 import { EventsContext } from "@/context/eventsContext";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
-export default function Home() {
-  // this page is rendered as client component becuase we are required to add spinner for loading state, server component can't be used here
-
+const Page = () => {
   const { events, loading } = useContext(EventsContext);
-
-  // useEffect(() => {
-  //   fetchData({ latitude: 33.570816, longitude: 73.0628096 });
-  // }, []);
 
   return (
     <>
       {loading ? (
-        // spinner
         <div className="flex items-center w-full justify-center">
           <div role="status">
             <svg
@@ -43,38 +32,16 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <div className="w-full flex flex-col lg:flex-row h-[90vh] gap-[3%]">
-          <div className="block lg:hidden">
-            <UpcomingEvents
-              events={events.filter(
-                (event) => new Date(event.start) > new Date()
-              )}
-            />
+        <div className="w-full">
+          <div className="flex items-center justify-between w-full">
+            <p className="text-xl font-bold">Favorite Events</p>
+            <Filters />
           </div>
-          <div className="w-full lg:w-[67%] flex flex-col gap-5">
-            <div>
-              <div className="flex justify-between items-center">
-                <p className="font-semibold text-xl">Events List</p>
-                <Filters />
-              </div>
-              <div className="max-h-[65vh] h-[100%] overflow-scroll">
-                <Table />
-              </div>
-            </div>
-            <Stats />
-          </div>
-          <div className="w-full lg:w-[30%] flex flex-col gap-5 lg:max-w-[393px] items-stretch relative">
-            <div className="hidden lg:block">
-              <UpcomingEvents
-                events={events.filter(
-                  (event) => new Date(event.start) > new Date()
-                )}
-              />
-            </div>
-            <EventOfMonth />
-          </div>
+          <Table isFavorite={true} />
         </div>
       )}
     </>
   );
-}
+};
+
+export default Page;

@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
+import EventsContextProvider from "@/context/eventsContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +12,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <EventsContextProvider>
+        <body className="bg-primary">
+          <Navbar />
+          <div className="flex gap-10 p-3 items-stretch">
+            <Sidebar />
+            {children}
+          </div>
+        </body>
+      </EventsContextProvider>
     </html>
   );
 }
