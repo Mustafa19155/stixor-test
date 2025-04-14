@@ -37,4 +37,5 @@ jobs:
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/frontend:latest \
             --region ${{ secrets.GCP_REGION }} \
             --platform managed \
-            --quiet
+            --quiet \
+            --update-env-vars=""
