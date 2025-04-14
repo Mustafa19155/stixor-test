@@ -1,7 +1,7 @@
 "use client";
 
 const Page = () => {
-  console.log("asd");
+  console.log("asdd");
   console.log(process.env.NEXT_PUBLIC_API_URL);
   return (
     <div>
