@@ -1,8 +1,7 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import EventsContextProvider from "@/context/eventsContext";
+import "./globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,6 +9,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  console.log(process.env.NEXT_PUBLIC_API_URL);
+
   return (
     <html lang="en">
       <head>
