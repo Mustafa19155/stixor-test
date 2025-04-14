@@ -38,4 +38,3 @@ jobs:
             --region ${{ secrets.GCP_REGION }} \
             --platform managed \
             --quiet \
-            --update-env-vars=""
